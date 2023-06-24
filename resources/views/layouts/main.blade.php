@@ -4,18 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NAMANGANLIKLAR 24</title>
-  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body>
-  <div class="layer">
+
+
+  {{-- <div class="layer">
     <div class="modal-box basic-flex">
       <button type="button" class="btn hide-modal-btn">x</button>
       <h4>Подписывайтесь на наш канал в Telegram и будьте всегда в курсе самых последних новостей:</h4>
       <div class="telegram-join  basic-flex">
-        <a href="#"><img src="img/tg.png" alt="Telegram">Подписатся</a>
+        <a href="#"><img src="assets/img/tg.png" alt="Telegram">Подписатся</a>
       </div>
     </div>
-  </div>
+  </div> --}}
+  
+
   <div class="menu-mask"></div>
   <main>
     <header class="main-header">
@@ -47,15 +51,18 @@
         </div>
         <button type="button" class="btn btn-menu"><span class="hamburger"></span></button>
        
+
             @include('layouts.navbar')
+
 
             @yield('content')
 
-        {{-- <div class="advertisement-box">
+
+        <div class="advertisement-box">
           <h4>PLACEHOLDER FOR ADVERTISEMENT</h1>
         </div>
       </div>
-    </header> --}}
+    </header>
 
     <footer class="footer">
         <div class="container">
@@ -91,4 +98,4 @@
     </body>
     </html>
     
-    @endsection
+    {{-- @endsection --}}

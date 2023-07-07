@@ -80,7 +80,7 @@
             </div>
             <ul class="footer-menu">
               <li class="footer-menu__item"><a href="#" class="footer-menu__link">Информация о сайте</a></li>
-              <li class="footer-menu__item"><a href="#" class="footer-menu__link">Напишите нам</a></li>
+              <li class="footer-menu__item"><a href="contact" class="footer-menu__link">Напишите нам</a></li>
               <li class="footer-menu__item"><a href="#" class="footer-menu__link">Реклама</a></li>
               <li class="footer-menu__item"><a href="#" class="footer-menu__link">Прислать новость</a></li>
             </ul>

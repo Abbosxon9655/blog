@@ -6,24 +6,23 @@
         <div class="form__wrapper">
           <h3 class="form__wrapper-title">Напишите нам
           </h3>
-          <form method="GET">
+
+
+          <form method="POST" action="/messages">
+            @csrf
+            @method('POST')
             <div class="form__top">
-              <label><input type="text" placeholder="Имя" required></label>
-              <label><input type="email" placeholder="Электронная почта" required></label>
-              <label><input type="text" placeholder="Номер телефона" required></label>
-              <label><input type="text" placeholder="Тема" required></label>
-              <textarea class="contact-tetxarea" placeholder="Текст" required></textarea>
+                <label><input type="text" placeholder="Имя" name="name" required></label>
+                {{-- <label><input type="email" placeholder="Электронная почта" name="email" required></label> --}}
+                <label><input type="text" placeholder="Номер телефона" name="number" required></label>
+                {{-- <textarea class="contact-tetxarea" placeholder="Текст" name="content" required></textarea> --}}
             </div>
             <div class="form__bottom">
-              <input type="file" name="file" id="file" class="inputfile">
-              <label for="file" class="basic-flex">Прикрепить файл</label>
-              <label class="basic-flex verification-code-wrapper">
-                <input type="text" placeholder="Код" required>
-                <span class="verification-code">4 k 7 Z a</span>
-              </label>
-              <button type="submit" class="btn send-btn">Отправить</button>
+                <button type="submit" class="btn send-btn">Отправить</button>
             </div>
-          </form>
+        </form>
+
+
         </div>
         <div class="business__card">
           <h3 class="card__title">NAMANGANLIKLAR24</h3>
@@ -46,8 +45,8 @@
           <div class="card__item basic-flex">
             <span card__item-title>Мобильная приложение</span>
             <div class="card__apps-wrapper basic-flex">
-              <a href="#"><img src="img/googleplay-wh.png" alt="GooglePlay"></a>
-              <a href="#"><img src="img/appstore-white.png" alt="AppStore"></a>
+              <a href="#"><img src="assets/img/googleplay-wh.png" alt="GooglePlay"></a>
+              <a href="#"><img src="assets/img/appstore-white.png" alt="AppStore"></a>
             </div>
           </div>
         </div>

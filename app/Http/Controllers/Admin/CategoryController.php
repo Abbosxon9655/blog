@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Events\AuditEvent;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -49,9 +50,13 @@ class CategoryController extends Controller
         return redirect()->route('admin.categories.index')->with('success', 'Malumot mavaffaqiyatli ozgartirildi');
     }
 
-    public function destroy($id)
+    public function destroy(Category $category)
     {
-        Category::find($id)->delete();
+
+        $user = auth()->user()->name;
+        event(new AuditEvent('delete', 'categories', $user, $category));
+
+        $category->delete();
 
         return redirect()->route('admin.categories.index')->with('danger', 'Malumot mavaffaqiyatli ochirildi');
     }

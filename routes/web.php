@@ -6,6 +6,11 @@ use App\Http\Controllers\SiteController\SiteController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\PostController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\LoginController;
+use App\Http\Controllers\Admin\MessageController;
+use App\Http\Controllers\Admin\AuditController;
+use App\Http\Controllers\Admin\Post_TegController;
+use App\Http\Controllers\Admin\TegController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +28,8 @@ Route::get('/', function () {
 });
 
 Route::auto('/', SiteController::class);
+Route::get('/singlePost/{id}', [SiteController::class, 'singlePost'])->name('singlePost');
+Route::get('/category/{id}', [SiteController::class, 'list'])->name('list');
 
 Route::prefix('admin/')->name('admin.')->middleware('auth')->group(function()
 {
@@ -30,7 +37,11 @@ Route::prefix('admin/')->name('admin.')->middleware('auth')->group(function()
 
     Route::resources([
         '/categories' => CategoryController::class,
-        '/posts' => PostController::class
+        '/posts' => PostController::class,
+        '/messages' => MessageController::class,
+        '/logins' => LoginController::class,
+        '/audits' => AuditController::class,
+        '/tegs' => TegController::class,
     ]);
 });
 

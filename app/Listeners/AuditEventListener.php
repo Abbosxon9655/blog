@@ -20,14 +20,15 @@ class AuditEventListener
     /**
      * Handle the event.
      */
-    public function handle(AuditEvent $event,  /* $table, $user, $data */ ): void
+    public function handle(object $event,  /* $table, $user, $data */ ): void
     {
         // \Log::info("User name {$event->user}");
 
         DB::table('audits')->insert([
             'event' => $event->event,
-            'tablename' => $event->table,
+           
             'username' => $event->user,
+            'tablename' => $event->table,
             'data' => $event->data,
         ]);
     }

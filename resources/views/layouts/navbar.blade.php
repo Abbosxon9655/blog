@@ -5,16 +5,13 @@
       <div class="currency"><span>P</span><span>138.26</span></div>
       <div class="currency"><span>E</span><span>10988.72</span></div>
     </div>
+    
     <ul class="navbar__menu basic-flex">
-      <li class="menu__item"><a href="article">Узбекистана</a></li>
-      <li class="menu__item"><a href="contact">Мир</a></li>
-      <li class="menu__item"><a href="list">Экономика</a></li>
-      <li class="menu__item"><a href="#">Политика</a></li>
-      <li class="menu__item"><a href="#">Общество</a></li>
-      <li class="menu__item"><a href="#">Технологии</a></li>
-      <li class="menu__item"><a href="#">Спорт</a></li>
-      <li class="menu__item"><a href="#">Культура</a></li>
-      <li class="menu__item"><a href="#">Происшествия</a></li>
-      <li class="menu__item"><a href="#">Туризм</a></li>
-    </ul>
-  </nav>
+
+      @foreach ($categories as $item)
+          
+      <li class="menu__item active"><a href="{{ route('list', $item->id) }}">{{ $item['name_uz'] }}</a></li>
+  
+      @endforeach
+  
+  </ul>

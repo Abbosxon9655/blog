@@ -26,13 +26,6 @@
                     <form action="{{ route('admin.posts.store') }}" method="POST">
                         @csrf
 
-                        <div class="mb-3">
-                            <label class="form-label">Category</label>
-                            <input type="text" name="category_id" value="{{ old('category_id') }}" class="form-control">
-                            @error('category_id')
-                                {{ $message }}
-                            @enderror
-                        </div>
 
                         <div class="col-sm-12 col-md-4">
                             <label class="form-label">Category</label>
@@ -42,6 +35,17 @@
                                 @endforeach
                             </select>
                         </div>
+
+                        
+                        <div class="col-sm-12 col-md-4">
+                            <label class="form-label">Teg</label>
+                            <select class="form-select mb-3" name="teg_id[]", multiple>
+                                @foreach ($tegs as $postTag)
+                                    <option value="{{ $postTag->id }}">{{ $postTag->teg_uz }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
 
                         <div class="mb-3">
                             <label class="form-label">Title Uz</label>
@@ -59,11 +63,23 @@
                             @enderror
                         </div>
 
-                        <div class="mb-3">
-                            <label for="formFile" class="form-label">Default file input example</label>
+                        {{-- <div class="mb-3">
+                            <label for="formFile" class="form-label">img</label>
                             <input class="form-control" type="file" id="formFile">
+                        </div> --}}
+
+
+                         
+                        <div class="mb-3">
+                            <label class="form-label">img</label>
+                            <input type="file" name="img"  class="form-control">
+                            @error('img')
+                                {{ $message }}
+                            @enderror
                         </div>
 
+
+                     
                         <div class="mb-3">
                             <label class="form-label">Body Uz</label>
                             <input type="text" name="body_uz" value="{{ old('body_uz') }}" class="form-control">

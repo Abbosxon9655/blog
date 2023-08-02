@@ -6,6 +6,7 @@ use App\Events\AuditEvent;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\Teg;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -23,13 +24,17 @@ class PostController extends Controller
     {
         $categories = Category::all();
 
-        return view('admin.posts.create', compact('categories'));
+        $tegs = Teg::all();
+
+        return view('admin.posts.create', compact('categories', 'tegs'));
     }
 
-    public function store(Request $request, Post $post)
+    public function store(Request $request, )
     {
         $user = auth()->user()->name;
-        event(new AuditEvent('create', 'posts', $user, $post));
+        event(new AuditEvent('create', 'posts', $user, $request));
+
+        // dd($request);
 
         $requestData = $request->all();
 
@@ -38,13 +43,18 @@ class PostController extends Controller
             $requestData['img'] = $this->upload_file();
         }
 
-        Post::create($requestData);
+        // dd($requestData);
+
+       $post = Post::create($requestData);
+
+       $post->tegs()->attach($request->teg_id);
 
         return redirect(route('admin.posts.index'))->with('succes', 'Ma`lumot q`oshildi');
     }
 
     public function show($id)
     {
+        
         $post = Post::find($id);
 
         return view('admin.posts.show', compact('post'));
@@ -84,6 +94,7 @@ class PostController extends Controller
         event(new AuditEvent('delete', 'posts', $user, $post));
 
         // Post::find($id)->delete();
+        
         $post->delete();
         $this->unlink_file($post);
 

@@ -23,9 +23,9 @@ class EventServiceProvider extends ServiceProvider
         //     SendEmailVerificationNotification::class,
         // ],
 
-        // LoginEvent::class => [
-        //     LoginEventListener::class,
-        // ],
+        LoginEvent::class => [
+            LoginEventListener::class,
+        ],
 
         
         AuditEvent::class => [
